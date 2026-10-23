@@ -147,6 +147,59 @@ if (finePointer && !reduce) {
   });
 }
 
+// Links do rodapé puxados pelo cursor com mola (mesmo efeito do Magnetic: intensity 0.3, range 100, sem quique)
+if (finePointer && !reduce) {
+  document.querySelectorAll(".magnetic").forEach((el) => {
+    let x = 0, y = 0, vx = 0, vy = 0, tx = 0, ty = 0, raf = 0;
+    const step = () => {
+      // mola criticamente amortecida: c = 2 * sqrt(k)
+      vx += ((tx - x) * 170 - vx * 26) / 60; x += vx / 60;
+      vy += ((ty - y) * 170 - vy * 26) / 60; y += vy / 60;
+      const done = Math.abs(tx - x) < 0.05 && Math.abs(ty - y) < 0.05 && Math.abs(vx) + Math.abs(vy) < 0.05;
+      if (done) { x = tx; y = ty; }
+      el.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
+      raf = done ? 0 : requestAnimationFrame(step);
+    };
+    const go = () => { if (!raf) raf = requestAnimationFrame(step); };
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      const scale = Math.max(0, 1 - Math.hypot(dx, dy) / 100);
+      tx = dx * 0.3 * scale; ty = dy * 0.3 * scale;
+      go();
+    });
+    el.addEventListener("pointerleave", () => { tx = 0; ty = 0; go(); });
+  });
+}
+
+// Card do projeto inclina levemente seguindo o cursor
+const project = document.querySelector(".project");
+if (project && finePointer && !reduce) {
+  project.addEventListener("pointermove", (e) => {
+    const r = project.getBoundingClientRect();
+    project.style.setProperty("--ry", `${((e.clientX - r.left) / r.width - 0.5) * 5}deg`);
+    project.style.setProperty("--rx", `${((e.clientY - r.top) / r.height - 0.5) * -5}deg`);
+  });
+  project.addEventListener("pointerleave", () => { project.style.removeProperty("--rx"); project.style.removeProperty("--ry"); });
+}
+
+// Busca do Google no bento: digita e apaga exemplos de pesquisa
+const typer = document.querySelector(".js-type");
+if (typer && !reduce) {
+  const queries = ["manicure em arujá", "pizzaria perto de mim", "dentista em santa isabel", "pet shop em mogi"];
+  let q = 0, n = queries[0].length, dir = -1;
+  const tick = () => {
+    const word = queries[q];
+    n += dir;
+    typer.textContent = word.slice(0, n);
+    let wait = dir > 0 ? 70 : 35;
+    if (n === word.length) { dir = -1; wait = 1800; }
+    else if (n === 0) { dir = 1; q = (q + 1) % queries.length; wait = 400; }
+    setTimeout(tick, wait);
+  };
+  setTimeout(tick, 1800);
+}
+
 // Caixa de dúvidas: monta a mensagem e abre o WhatsApp
 const ask = document.querySelector(".js-ask");
 if (ask) {

@@ -46,6 +46,15 @@
   <symbol id="i-check" viewBox="0 0 256 256"><path fill="currentColor" d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
   <symbol id="i-clock" viewBox="0 0 256 256"><path fill="currentColor" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 256 256"><path fill="currentColor" d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+  <!-- ícones de traço: pathLength=1 deixa o CSS "desenhar" cada um ao entrar na tela -->
+  <symbol id="s-search" viewBox="0 0 24 24"><circle pathLength="1" cx="10.5" cy="10.5" r="6.5"/><path pathLength="1" d="M20 20l-4.8-4.8"/></symbol>
+  <symbol id="s-phone" viewBox="0 0 24 24"><rect pathLength="1" x="6" y="2.5" width="12" height="19" rx="2.6"/><path pathLength="1" d="M10.5 18.3h3"/></symbol>
+  <symbol id="s-bolt" viewBox="0 0 24 24"><path pathLength="1" d="M13.2 2.5L4.8 13.4h6.6l-1 8.1 8.4-10.9h-6.6z"/></symbol>
+  <symbol id="s-pin" viewBox="0 0 24 24"><path pathLength="1" d="M12 21.2s-7-6.1-7-11.6a7 7 0 0 1 14 0c0 5.5-7 11.6-7 11.6z"/><circle pathLength="1" cx="12" cy="9.6" r="2.5"/></symbol>
+  <symbol id="s-globe" viewBox="0 0 24 24"><circle pathLength="1" cx="12" cy="12" r="9"/><path pathLength="1" d="M3 12h18"/><path pathLength="1" d="M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></symbol>
+  <symbol id="s-chat" viewBox="0 0 24 24"><path pathLength="1" d="M4 19.5l1.2-3.6A8.5 8.5 0 1 1 8.4 19z"/><path pathLength="1" d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
+  <symbol id="s-tag" viewBox="0 0 24 24"><path pathLength="1" d="M3 12.6V4a1 1 0 0 1 1-1h8.6l8.4 8.4-9.6 9.6z"/><circle pathLength="1" cx="7.8" cy="7.8" r="1.6"/></symbol>
+  <symbol id="s-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.9 6.6L20.5 10.5l-6.6 1.9L12 19l-1.9-6.6L3.5 10.5l6.6-1.9z"/></symbol>
 </svg>
 
 <header class="topbar">
@@ -95,6 +104,13 @@
   </section>
   </div>
 
+  <div class="marquee" aria-label="Atendo Arujá, Santa Isabel, Itaquaquecetuba, Mogi das Cruzes e Guarulhos">
+    <div class="marquee-track" aria-hidden="true">
+      <span>Arujá</span><svg><use href="#s-spark"/></svg><span>Santa Isabel</span><svg><use href="#s-spark"/></svg><span>Itaquaquecetuba</span><svg><use href="#s-spark"/></svg><span>Mogi das Cruzes</span><svg><use href="#s-spark"/></svg><span>Guarulhos</span><svg><use href="#s-spark"/></svg>
+      <span>Arujá</span><svg><use href="#s-spark"/></svg><span>Santa Isabel</span><svg><use href="#s-spark"/></svg><span>Itaquaquecetuba</span><svg><use href="#s-spark"/></svg><span>Mogi das Cruzes</span><svg><use href="#s-spark"/></svg><span>Guarulhos</span><svg><use href="#s-spark"/></svg>
+    </div>
+  </div>
+
   <section id="servicos" class="wrap section">
     <h2 class="h2 reveal">Do zero ao site no ar</h2>
     <div class="stack">
@@ -125,6 +141,50 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Perguntas frequentes</li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Ajuda com o Google Meu Negócio</li>
         </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="incluso" class="wrap section">
+    <h2 class="h2 reveal">O que todo site meu já leva</h2>
+    <div class="bento">
+      <article class="tile tile-google spot reveal">
+        <svg class="ico" aria-hidden="true"><use href="#s-search"/></svg>
+        <h3>Aparece no Google</h3>
+        <p>Texto e estrutura pensados para quem procura o seu serviço na cidade.</p>
+        <div class="search" aria-hidden="true">
+          <svg><use href="#s-search"/></svg><span class="js-type">manicure em arujá</span><i class="caret"></i>
+        </div>
+      </article>
+      <article class="tile tile-phone spot reveal">
+        <svg class="ico" aria-hidden="true"><use href="#s-phone"/></svg>
+        <h3>Feito para o celular</h3>
+        <p>A maioria dos seus clientes vai abrir pelo telefone. O site nasce para ele.</p>
+        <div class="mock" aria-hidden="true"><div class="mock-feed"><b></b><i></i><i></i><b></b><i></i><i></i><b></b><i></i><i></i><b></b><i></i><i></i></div></div>
+      </article>
+      <article class="tile tile-speed spot reveal">
+        <svg class="ico" aria-hidden="true"><use href="#s-bolt"/></svg>
+        <h3>Abre rápido</h3>
+        <p>Leve até no 4G, sem ninguém desistir esperando carregar.</p>
+        <div class="loadbar" aria-hidden="true"><span></span></div>
+      </article>
+      <article class="tile tile-map spot reveal">
+        <svg class="ico" aria-hidden="true"><use href="#s-pin"/></svg>
+        <h3>No mapa</h3>
+        <p>Endereço, horário e rota com um toque.</p>
+        <div class="ping" aria-hidden="true"><span></span></div>
+      </article>
+      <article class="tile tile-chat spot reveal">
+        <svg class="ico" aria-hidden="true"><use href="#s-chat"/></svg>
+        <h3>Cliente direto no WhatsApp</h3>
+        <p>Cada botão abre uma conversa com você, já com a mensagem pronta.</p>
+        <p class="bubble" aria-hidden="true">Oi, vi seu site e queria marcar um horário.</p>
+      </article>
+      <article class="tile tile-domain spot reveal">
+        <svg class="ico" aria-hidden="true"><use href="#s-globe"/></svg>
+        <h3>Endereço com o seu nome</h3>
+        <p>Domínio registrado no seu nome ou CNPJ.</p>
+        <p class="url" aria-hidden="true"><span>www.</span>seunegocio<span>.com.br</span></p>
       </article>
     </div>
   </section>
@@ -176,7 +236,8 @@
   <section id="duvidas" class="wrap section faq">
     <h2 class="h2 reveal">Perguntas frequentes</h2>
     <dl class="faq-grid">
-      <div class="reveal"><dt>Quanto custa um site?</dt><dd>Depende do tamanho do projeto. Você me conta o que precisa pelo WhatsApp e eu passo o valor fechado antes de começar.</dd></div>
+      <div class="reveal"><dt>Quanto custa um site?</dt><dd>Cada projeto tem um orçamento próprio, feito para o tamanho do seu negócio. Entre em contato comigo pelo nosso WhatsApp, me conte o que precisa e eu faço o seu orçamento sem compromisso, com o valor fechado antes de começar.
+        <a class="link faq-cta" href="https://wa.me/5511941066262?text=Ol%C3%A1%20Matheus%2C%20vim%20pelo%20portf%C3%B3lio%20e%20quero%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Fazer meu orçamento no WhatsApp<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></dd></div>
       <div class="reveal"><dt>Tem mensalidade?</dt><dd>O site é pago uma vez. Domínio e hospedagem têm um custo anual pequeno, e eu explico tudo antes de fechar.</dd></div>
       <div class="reveal"><dt>O domínio fica no meu nome?</dt><dd>Sim. O endereço do site é registrado no seu nome ou no seu CNPJ. O site é seu.</dd></div>
       <div class="reveal"><dt>E se eu quiser mudar algo depois?</dt><dd>É só me chamar. Ajustes pequenos, como trocar foto ou horário, eu faço rápido. Mudanças maiores a gente combina antes.</dd></div>
@@ -206,10 +267,20 @@
     </div>
   </section>
 
+  <section class="wrap promises" aria-label="Compromissos">
+    <ul>
+      <li class="promise reveal"><svg class="ico" aria-hidden="true"><use href="#s-phone"/></svg><h3>Prévia antes de fechar</h3><p>Você vê como o site vai ficar antes de decidir.</p></li>
+      <li class="promise reveal"><svg class="ico" aria-hidden="true"><use href="#s-tag"/></svg><h3>Valor fechado</h3><p>Orçamento pelo WhatsApp, sem surpresa no final.</p></li>
+      <li class="promise reveal"><svg class="ico" aria-hidden="true"><use href="#s-globe"/></svg><h3>Domínio no seu nome</h3><p>Registrado no seu nome ou CNPJ. O site é seu.</p></li>
+      <li class="promise reveal"><svg class="ico" aria-hidden="true"><use href="#s-chat"/></svg><h3>Fala direto comigo</h3><p>Sem atendente. Quem responde é quem faz o site.</p></li>
+    </ul>
+  </section>
+
   <section id="contato" class="wrap section-end">
     <div class="cta spot reveal">
       <svg class="cta-logo" aria-hidden="true"><use href="#logo"/></svg>
       <h2>Vamos colocar seu negócio na internet?</h2>
+      <p class="cta-text">Me chama no WhatsApp, conta o que você precisa e eu faço o seu orçamento sem compromisso.</p>
       <a class="btn" href="https://wa.me/5511941066262?text=Ol%C3%A1%20Matheus%2C%20vim%20pelo%20portf%C3%B3lio%20e%20quero%20um%20site%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener noreferrer">
         <svg aria-hidden="true"><use href="#i-whats"/></svg>Chamar no WhatsApp
       </a>
@@ -224,9 +295,9 @@
 <footer class="wrap footer">
   <p>KODEVA Studio, Arujá (SP). <span class="js-year">2026</span></p>
   <ul>
-    <li><a href="https://instagram.com/kodeva.studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-    <li><a href="https://github.com/TH-Messias" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-    <li><a href="https://www.linkedin.com/in/matheus-messias-119ba4279" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    <li><a href="https://instagram.com/kodeva.studio" target="_blank" rel="noopener noreferrer" class="social magnetic">Instagram<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+    <li><a href="https://github.com/TH-Messias" target="_blank" rel="noopener noreferrer" class="social magnetic">GitHub<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+    <li><a href="https://www.linkedin.com/in/matheus-messias-119ba4279" target="_blank" rel="noopener noreferrer" class="social magnetic">LinkedIn<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
   </ul>
 </footer>
 </body>
