@@ -148,7 +148,7 @@ em, i { font-style: normal; }
 .plan { display: grid; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--line); }
 .plan + .plan { background: var(--surface-2); }
 .plan-head { display: flex; flex-direction: column; gap: 0.9rem; }
-.plan-num { font-size: 0.875rem; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.plan-cta { align-self: flex-start; margin-top: 0.75rem; }
 .plan h3 { font-size: clamp(1.9rem, 4vw, 2.5rem); }
 .plan-head > p:not(.tag) { font-size: 1.125rem; color: var(--muted); max-width: 40ch; }
 .tag {
@@ -165,7 +165,14 @@ em, i { font-style: normal; }
 
 /* Quem sou */
 .about { padding-block: clamp(6rem, 14vw, 11rem) clamp(6.5rem, 15vw, 12rem); }
-.about .eyebrow { margin-bottom: 2rem; }
+.about { display: grid; gap: 3rem; align-items: center; }
+.about-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; }
+.about-photo { width: min(100%, 22rem); aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+@media (min-width: 900px) {
+  .about { grid-template-columns: minmax(16rem, 0.75fr) 1.6fr; gap: 5rem; }
+  .about-photo { width: 100%; transform: rotate(-2deg); }
+}
 .statement { font-size: clamp(1.9rem, 4.6vw, 3.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; max-width: 26ch; text-wrap: balance; }
 .statement .w { opacity: 0.18; transition: opacity 0.4s var(--ease); }
 .statement .w.on { opacity: 1; }
@@ -189,19 +196,38 @@ em, i { font-style: normal; }
 .timeline { position: relative; }
 .timeline-bar { position: absolute; top: 0.6rem; bottom: 0.6rem; left: 7px; width: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
 .timeline-bar span { position: absolute; inset: 0; background: var(--accent-ink); transform-origin: top; transform: scaleY(var(--p, 1)); }
-.timeline ol { display: flex; flex-direction: column; gap: 3.5rem; padding-left: 2.75rem; counter-reset: s; }
-.timeline li { position: relative; display: flex; flex-direction: column; gap: 0.5rem; counter-increment: s; }
+.timeline ol { display: flex; flex-direction: column; gap: 3.5rem; padding-left: 2.75rem; }
+.timeline li { position: relative; display: flex; flex-direction: column; gap: 0.5rem; }
 .timeline li::before {
   content: ""; position: absolute; top: 0.45rem; left: -2.75rem; width: 1rem; height: 1rem;
   border-radius: 50%; border: 2px solid var(--accent-ink); background: var(--bg);
 }
-.timeline li::after { content: "0" counter(s); order: -1; font-size: 0.875rem; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
 .timeline h3 { font-size: clamp(1.6rem, 3vw, 2rem); }
 .timeline p { font-size: 1.125rem; color: var(--muted); max-width: 36ch; }
 @media (min-width: 768px) {
   .steps { grid-template-columns: 1fr 1.2fr; }
   .steps-title { position: sticky; top: 7rem; align-self: start; }
 }
+
+/* Dúvidas */
+.faq-grid { display: grid; gap: 2.5rem 4rem; }
+.faq-grid > div { display: flex; flex-direction: column; gap: 0.6rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.faq-grid dt { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+.faq-grid dd { color: var(--muted); max-width: 46ch; }
+@media (min-width: 768px) { .faq-grid { grid-template-columns: 1fr 1fr; } }
+
+/* WhatsApp flutuante, só no celular e depois do hero */
+.wa-float {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: var(--z-header);
+  display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: var(--radius);
+  background: var(--accent); color: #fff; box-shadow: 0 12px 30px -10px rgb(79 105 230 / 0.8);
+  opacity: 0; transform: translateY(1rem); pointer-events: none;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.wa-float svg { width: 1.6rem; height: 1.6rem; }
+.wa-float.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.wa-float:active { transform: scale(0.96); }
+@media (min-width: 768px) { .wa-float { display: none; } }
 
 /* CTA */
 .cta {

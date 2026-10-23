@@ -40,6 +40,7 @@ function drawK() {
 }
 
 const header = document.querySelector(".topbar");
+const waFloat = document.querySelector(".wa-float");
 const bar = document.querySelector(".js-progress");
 const timeline = document.querySelector(".timeline");
 const navLinks = [...document.querySelectorAll(".nav-links a")];
@@ -56,6 +57,8 @@ function update() {
     kTarget = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh)));
     if (!kRaf) kRaf = requestAnimationFrame(drawK);
   }
+
+  if (hero) waFloat.classList.toggle("is-on", hero.getBoundingClientRect().bottom < vh * 0.5);
 
   if (words.length && !reduce) {
     const r = statement.getBoundingClientRect();
