@@ -20,6 +20,25 @@ if (statement) {
   words.push(...statement.querySelectorAll(".w"));
 }
 
+// Hero: as 3 peças do K chegam espalhadas e se montam conforme o scroll
+const hero = document.querySelector(".js-hero");
+const pieces = [...document.querySelectorAll(".k-piece")].map((el) => ({ el, from: el.dataset.from.split(" ").map(Number) }));
+const caption = document.querySelector(".hero-caption");
+let kTarget = 0, kNow = 0, kRaf = 0;
+function drawK() {
+  kNow += (kTarget - kNow) * 0.12; // suaviza como o scrub do GSAP
+  if (Math.abs(kTarget - kNow) < 0.001) kNow = kTarget;
+  const q = 1 - kNow;
+  for (const { el, from: [x, y, r] } of pieces) {
+    el.style.transform = `translate(${x * q}px, ${y * q}px) rotate(${r * q}deg)`;
+    el.style.opacity = 0.25 + 0.75 * kNow;
+  }
+  const c = Math.min(1, Math.max(0, (kNow - 0.7) / 0.3));
+  caption.style.opacity = c;
+  caption.style.transform = `translateY(${12 * (1 - c)}px)`;
+  kRaf = kNow === kTarget ? 0 : requestAnimationFrame(drawK);
+}
+
 const header = document.querySelector(".topbar");
 const bar = document.querySelector(".js-progress");
 const timeline = document.querySelector(".timeline");
@@ -31,6 +50,12 @@ function update() {
   ticking = false;
   const vh = innerHeight;
   header.classList.toggle("is-scrolled", scrollY > 8);
+
+  if (hero && !reduce) {
+    const r = hero.getBoundingClientRect();
+    kTarget = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh)));
+    if (!kRaf) kRaf = requestAnimationFrame(drawK);
+  }
 
   if (words.length && !reduce) {
     const r = statement.getBoundingClientRect();
